@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+long long twoKnight(int k)
+{
+    long long totalways=1LL*(k*k)*(k*k-1)/2;
+    long long attack=4*(k-1)*(k-2);
+    return totalways-attack;
+}
+int main() {
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        cout<<twoKnight(i)<<endl;
+    }
+}
