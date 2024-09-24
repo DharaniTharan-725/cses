@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long mod=1e9+7;
+long long find(long long base,long long expo)
+{
+    long long ans=1;
+    while(expo)
+    {
+        if(expo & 1LL)
+        {
+            ans=(ans* base)%mod;
+        }
+        base=(base*base)%mod;
+        expo >>=1ll;
+    }
+    return ans;
+}
+int main()
+{
+    long long n;
+    cin>>n;
+    cout<<find(2ll,n);
+}
