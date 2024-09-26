@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+void moveslist(vector<vector<int>>&moves,int source,int dest,int aux,int n)
+{
+        if(n==1)
+        {
+           moves.push_back({source,dest});
+           return;
+        }
+        moveslist(moves,source,aux,dest,n-1);
+        moves.push_back({source,dest});
+        moveslist(moves,aux,dest,source,n-1);
+        
+}
+void tower(int n)
+{
+        vector<vector<int>>moves;
+        int source=1,dest=3,aux=2;
+        moveslist(moves,source,dest,aux,n);
+        cout<<moves.size()<<endl;
+        for(auto m:moves)
+        {
+                cout<<m[0]<<" "<<m[1]<<endl;
+        }
+        
+}
+int main() {
+	int n;
+	cin>>n;
+	tower(n);
+
+}
