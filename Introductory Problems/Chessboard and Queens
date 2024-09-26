@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve(vector<string>& board, int row,
+           vector<bool>& cols, vector<bool>& primary,
+           vector<bool>& secondary, int& ans) {
+    if (row == 8) {
+        ans += 1; 
+        return;
+    }
+
+    for (int col = 0; col < 8; col++) 
+    {  
+        if (board[row][col] == '*' || cols[col] || primary[row - col + 8] || secondary[row + col]) {
+            continue;
+        }
+        cols[col] = primary[row - col + 8] = secondary[row + col] = true;
+
+        solve(board, row + 1, cols, primary, secondary, ans);
+
+        cols[col] = primary[row - col + 8] = secondary[row + col] = false;
+    }
+}
+
+int main() {
+    vector<string> board(8); 
+    for (int i = 0; i < 8; i++) {
+        cin >> board[i]; 
+    }
+    vector<bool> cols(8, false),            
+                primary(16, false),        
+                secondary(16, false);      
+
+    int ans = 0;  
+    solve(board, 0, cols, primary, secondary, ans);
+
+    cout << ans << "\n";
+
+    return 0;
+}
