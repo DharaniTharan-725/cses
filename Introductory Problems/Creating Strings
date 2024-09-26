@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+set<string>solve(string str)
+{
+    int n=str.length();
+    sort(str.begin(),str.end());
+    set<string>unique;
+    do{
+        unique.insert(str);
+    }while(next_permutation(str.begin(),str.end()));
+    return unique;
+}
+int main()
+{
+    string str;
+    cin>>str;
+    set<string>unique=solve(str);
+    cout<<unique.size()<<endl;
+    for(auto s:unique)
+    {
+        cout<<s<<endl;
+    }
+    
+}
